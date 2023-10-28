@@ -7,15 +7,8 @@ import { COLORS, SIZES } from "../../../constants";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 import useFetch from "../../../hook/useFetch";
 
-const Popularjobs = () => {
+const Popularjobs = ({ data, isLoading, error }) => {
   const router = useRouter();
-
-  const { data, isLoading, error } = useFetch("search", {
-    query: "React Developer",
-    num_pages: 1,
-  });
-
-  console.log("data", data);
 
   return (
     <View style={styles.container}>
