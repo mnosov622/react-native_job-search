@@ -7,13 +7,12 @@ import useFetch from "../hook/useFetch";
 
 const Home = () => {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { data, isLoading, error } = useFetch("search", {
     query: "React Developer",
     num_pages: 1,
   });
-
-  console.log("data", data);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -34,7 +33,15 @@ const Home = () => {
             padding: SIZES.medium,
           }}
         >
-          <Welcome />
+          <Welcome
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() => {
+              if (searchTerm) {
+                router.push(`/search/${searchTerm}`);
+              }
+            }}
+          />
           <Popularjobs data={data} isLoading={isLoading} error={error} />
           <Nearbyjobs data={data} isLoading={isLoading} error={error} />
         </View>

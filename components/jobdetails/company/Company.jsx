@@ -6,7 +6,6 @@ import { checkImageURL } from "../../../utils/index";
 import { icons } from "../../../constants";
 
 const Company = ({ companyLogo, jobTitle, companyName, location }) => {
-  console.log("received", companyLogo, jobTitle);
   return (
     <View style={styles.container}>
       <View style={styles.logoBox}>
